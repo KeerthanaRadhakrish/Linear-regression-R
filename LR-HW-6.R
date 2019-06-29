@@ -1,0 +1,30 @@
+## step wise, forward selection and backward elimination method
+house<-read.csv("hw6.data.csv")
+house
+plot(Y~X1,data=house)
+plot(Y~X2,data=house)
+plot(Y~X3,data=house)
+plot(Y~X4,data=house)
+plot(Y~(X4)^2,data=house)
+plot(Y~Z,data=house)
+
+library(leaps)
+leaps(x=house[,3:7], y=house[,2], method=c("adjr2") )
+?leaps
+
+m7<-lm(Y~X1+X3, data=house)              
+m14<-lm(Y~X3+Z,data=house)                
+m11<-lm(Y~X2+X3,data=house)               
+m19<-lm(Y~X1+X3+X4,data=house)        
+m20<-lm(Y~X1+X3+Z,data=house)           
+m22<- lm(Y~X2+X3+X4,data=house)       
+m23<- lm(Y~X2+X3+Z,data=house)           
+m25<- lm(Y~X3+X4+Z,data=house)           
+m28<-lm(Y~X1+X2+X3+Z,data=house)      
+m29<-lm(Y~X1+X3+X4+Z,data=house)      
+m16<-lm(Y~X1+X2+X3,data=house)        
+m26<-lm(Y~X1+X2+X3+X4,data=house)  
+m28<-lm(Y~X1+X2+X3+Z,data=house)    
+m30<-lm(Y~X2+X3+X4+Z,data=house)     
+m31<-lm(Y~X1+X2+X3+X4+Z,data=house)     
+summary(m7)
